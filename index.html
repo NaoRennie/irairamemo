@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>my Memo</title>
+<script src="js/jquery-2.1.3.min.js"></script>
+<script src="js/anime.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+</head>
+
+<body background="img/mizutama.jpg">
+
+    <header background="img/mizutama2.jpg">
+        <h1>いらいらメモ</h1>
+    </header>
+
+    <main>
+        <div id="memo_pad1">
+            <div class="memo1" ><textarea id="memo1" class="memo" ></textarea></div>
+            <div id ="save1" class="btn">save</div>
+            <div id ="color1"  class="btn">color</div>
+        </div>
+       
+        <div id="memo_pad2">
+            <div class="memo2" ><textarea id="memo2" class="memo" ></textarea></div>
+            <div id ="save2" class="btn">save</div>
+            <div id ="color2" class="btn">color</div>
+        </div>
+
+        <div id="memo_pad3">
+            <div class="memo3" ><textarea id="memo3" class="memo" ></textarea></div>
+            <div id ="save3" class="btn">save</div>
+            <div id ="color3" class="btn">color</div>
+        </div> 
+        
+        <div id="all_con">
+            <div class="all_con" ><textarea id="all_con_text" class="all_con" style="background-image: url('img/ki.jpeg')"></textarea></div>
+            <div id ="show" class="btn">show</div>  
+        </div>
+
+        <div id="clear">
+            <div id ="clear_all" class="btn">clear</div>  
+        </div>
+    </main>
+
+<script>
+var memo1 = document.getElementById('memo_pad1');
+memo1.addEventListener('click',function(){
+  anime({
+    targets: memo1,
+    translateX:300,
+    duration:1500
+  })              
+});
+
+var memo2 = document.getElementById('memo_pad2');
+memo2.addEventListener('click',function(){
+  anime({
+    targets: memo2,
+    translateX:700,
+    duration:1500
+  })              
+});
+
+var memo3 = document.getElementById('memo_pad3');
+memo3.addEventListener('click',function(){
+  anime({
+    targets: memo3,
+    translateX:500,
+    duration:1500
+  })              
+});
+
+let textValue = "";
+
+function saveData() {
+    let json_text = JSON.stringify(textValue);
+    localStorage.setItem("data", json_text);
+
+}
+
+
+for (let i = 1; i < 4; i++) {
+$('#save' + i).on('click', function(){
+    textValue = $("#memo" + i).val();
+    let num = Math.ceil(Math.random() * 3);
+    if(num==1 || num==2){
+     localStorage.setItem('memo'+ i, textValue);
+
+     saveData(i);
+
+     alert("saveしました");
+    }
+    if(num==3){
+     $('#memo_pad' + i).prepend('<img src ="img/be.jpg">');
+     alert("saveしませんでした");
+    }
+});
+
+}
+
+for (let i = 1; i < 4; i++) {
+if(localStorage.getItem("memo"+ i )){
+        const v = localStorage.getItem('memo'+i);
+        $('#memo'+i).val(v);
+};
+}
+
+let p = 0;
+        let bgcolor = ["#CCCCFF", "#FFAAFF", "#FFFFAA", "#FFD5EC", "white", "#78FF94"];
+
+        for (let i = 1; i < 4; i++) {
+            $("#color" + i).on("click", function () {
+                $(this).each(function () {
+                    $("#memo" + i).css('background-color', bgcolor[p]);
+                    $(".memo" + i +":before").css('border-color', bgcolor[p]);
+                    p++;
+                    if (p > 7) {
+                        p = 0;
+                    }
+                });
+            })
+        }
+
+ $("#show").on('click', function(){
+     let text = localStorage.getItem("data");
+     jason = JSON.parse(text);
+     $("#all_con_text").html(jason);
+ })
+
+ $('#clear_all').on('click', function(){
+     alert("消去してもいいですか？");
+    for(let i = 1; i < 4; i++){
+     localStorage.removeItem("memo" + i); 
+    };
+    
+     localStorage.removeItem("data");
+     $("#all_con_text").html(""); 
+ });
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+body{
+    margin-left: 20px;
+    padding:0;
+    text-align:left;
+    font-size: 20px;
+    
+}
+header{
+    border-bottom: 1px solid #ccc;
+    text-align: center;
+}
+
+textarea.memo {
+    z-index: 1;
+    width: 300px;
+    height: 200px;
+    background: #eee;
+    border-radius: 3px;
+    border-color: #eee;
+    font-size: 20px;
+
+}
+#memo_pad1 {
+    margin-top: 50px;
+}
+.memo1 {
+  width: 300px;
+  height: 200px;
+  background: #eee;
+  border-radius: 3px;
+  position:relative;
+}
+.memo1:before {
+    position: absolute;
+    right: 30px;
+    bottom: -45px;
+    content: '';
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 25px 30px 20px 0;
+    border-color: #eee transparent transparent transparent;
+
+}
+
+.btn {
+    width: 50px;
+    height: 50px;
+    margin-top: 50px;
+    margin-left: 125px;
+    border-radius: 50%;
+    background-color: #32EEFF;
+    color: #666666;
+    font-size: 20px;
+	display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.btn:hover {
+    opacity: 70%;
+    cursor: pointer;
+}
+
+#memo_pad2 {
+    margin-top: 50px;
+}
+
+.memo2 {
+    width: 300px;
+    height: 200px;
+    background: #eee;
+    border-radius: 3px;
+    position:relative;
+  }
+  .memo2:before {
+      position: absolute;
+      right: 30px;
+      bottom: -45px;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 25px 30px 20px 0;
+      border-color: #eee transparent transparent transparent;
+  
+  }
+  
+
+  #memo_pad3 {
+    margin-top: 50px;
+}
+
+  .memo3 {
+    width: 300px;
+    height: 200px;
+    background: #eee;
+    border-radius: 3px;
+    position:relative;
+  }
+  .memo3:before {
+      position: absolute;
+      right: 30px;
+      bottom: -45px;
+      content: '';
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 25px 30px 20px 0;
+      border-color: #eee transparent transparent transparent;
+  
+  }
+  
+ #clear{
+     margin-top: 50px;
+ }
+
+ #all_con {
+    margin-top: 50px;
+
+}
+
+textarea.all_con {
+    width: 500px;
+    height: 400px;
+    border-radius: 3px;
+    font-size: 20px;
+    color: yellow;
+    z-index: 0;
+}
+  
+  
+  
